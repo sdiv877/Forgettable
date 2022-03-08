@@ -20,7 +20,7 @@ const schema = new Schema<PersonModel>({
   birthday: { type: Date, required: false },
   interests: { type: [String], required: false },
   organisation: { type: String, required: false },
-  time_added: { type: Date, required: true },
+  time_added: { type: Date, default: Date.now, required: true },
   how_we_met: { type: String, required: false },
   encounters: { type: [Schema.Types.ObjectId], required: false }
 });

@@ -3,6 +3,7 @@
  */
 import { Schema, model } from 'mongoose';
 
+// Should not need encounters to be null regularly
 export interface PersonModel {
   first_name: string,
   last_name: string,
@@ -11,7 +12,7 @@ export interface PersonModel {
   organisation: string,
   time_added: Date,
   how_we_met: string,
-  encounters: [Schema.Types.ObjectId]
+  encounters: [Schema.Types.ObjectId] | null
 }
 
 const schema = new Schema<PersonModel>({

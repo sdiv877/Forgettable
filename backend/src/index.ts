@@ -21,7 +21,7 @@ connect(config.MONGODB_URI)
   .catch((err) => logger.error('Error connecting to MongoDB:', err.message));
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());

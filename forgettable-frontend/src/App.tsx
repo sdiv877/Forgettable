@@ -51,8 +51,8 @@ function App() {
         <br />
         <input type="text" placeholder="encounters" disabled />
         <br />
-        <button type="button" onClick={() => {
-          api.createPerson({
+        <button type="button" onClick={async() => {
+          const res = await api.createPerson({
             first_name: firstName,
             last_name: lastName,
             birthday: new Date(),
@@ -60,8 +60,10 @@ function App() {
             organisation: organisation,
             time_added: timeAdded,
             how_we_met: howWeMet,
-            encounters: [new Schema.Types.ObjectId("Encounter")]
-          })
+            encounters: null
+          });
+
+          console.log(res);
         }}>Submit</button>
       </form>
 

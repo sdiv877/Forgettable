@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { PersonModel } from '../../../backend/src/models/person.model'
 
-const baseURL: string = 'http://localhost:3000/api';
+const baseURL: string = 'http://localhost:5000/api';
 
 const getPerson = async (_id: string): Promise<AxiosResponse<PersonModel>> => { 
     const foundDocJsonRes =  axios.get<PersonModel>(`${baseURL}/persons/${_id}`);

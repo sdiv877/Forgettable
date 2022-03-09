@@ -14,9 +14,14 @@ export const getPerson = async (personID: string) => {
   return person;
 }
 
+export const deletePerson = async (personID: string) => {
+  await Person.deleteOne({_id: personID});
+}
+
 const personService = {
   createPerson,
-  getPerson
+  getPerson,
+  deletePerson
 }
 
 export default personService;

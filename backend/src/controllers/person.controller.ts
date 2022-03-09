@@ -48,6 +48,27 @@ export const getPerson = async (
   }
 };
 
+export const deletePerson = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+  ): Promise<void> => {
+    logger.info("DELETE /persons/:personID request from frontend");
+  
+    // Attempt to find person with given ID in db
+    const foundPerson = await personService.getPerson(req.params.personID);
+  
+    if (!foundPerson) {
+      // If nothing was found log an error
+      logger.error(`A person with ID ${req.params.personID} could not be found.`)
+      res.sendStatus(404);
+    } else {
+      // Otherwise send res to frontend
+      await personService.deletePerson(req.params.personID);
+      res.sendStatus(200);
+    }
+  };
+
 // Util function that won't be needed regularly
 const getPersonFromReqBody = (body: any) => {
   const person = {
